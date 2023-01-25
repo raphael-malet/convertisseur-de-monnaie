@@ -94,11 +94,15 @@ def afficher_historique(historique, expression):
 
 
 def affichage_historique_ouverture_appli(historique):
-    historique_ouverture = open('historique.txt', 'r')
-    historique_ouverture = historique_ouverture.readlines()
+    try:
+        historique_ouverture = open('historique.txt', 'r')
+        historique_ouverture = historique_ouverture.readlines()
 
-    for i in range(len(historique_ouverture)):
-        historique.insert(0, historique_ouverture[i])
+        for i in range(len(historique_ouverture)):
+            historique.insert(0, historique_ouverture[i])
+    except:
+        historique_ouverture = open('historique.txt', 'w')
+        historique_ouverture.close()
 
 
 # focntion qui supprime le contenu dans la section historique de la fenetre
